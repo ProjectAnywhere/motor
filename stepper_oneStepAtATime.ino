@@ -27,6 +27,7 @@
  rotate Motor A clockwise by 12 steps
  rotate Motor B anticlockwise 13 steps
  
+ curretly I am passing the serial message thorugh HyperTerminal
  */
 
 #include <Stepper.h>
@@ -179,7 +180,7 @@ void loop()
     
     if (stepB > 0)    
     {
-      if (!directionB)
+      if (!sdirectionB)
       {
         rotateStepperBclockwise(stepB);
       }
