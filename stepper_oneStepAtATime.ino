@@ -167,7 +167,7 @@ void loop()
     
     if (stepA>0)
     {
-      if (directionA)
+      if (!directionA)
       {
         rotateStepperAclockwise(stepA);
       }
@@ -179,7 +179,7 @@ void loop()
     
     if (stepB > 0)    
     {
-      if (directionB)
+      if (!directionB)
       {
         rotateStepperBclockwise(stepB);
       }
