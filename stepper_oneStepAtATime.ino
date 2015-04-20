@@ -180,7 +180,7 @@ void loop()
     
     if (stepB > 0)    
     {
-      if (!sdirectionB)
+      if (!directionB)
       {
         rotateStepperBclockwise(stepB);
       }
