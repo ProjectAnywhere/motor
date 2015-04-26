@@ -5,7 +5,6 @@ using System.Threading;
 
 public class Sending : MonoBehaviour {
     
-    //public static SerialPort sp = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
 	public static SerialPort sp = new SerialPort("COM3", 9600);
 	public string msg;
 	// Use this for initialization
