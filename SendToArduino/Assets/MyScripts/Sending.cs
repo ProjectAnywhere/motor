@@ -1,3 +1,7 @@
+/*
+ * Wei Huang, 5/1/2015
+ */
+
 using UnityEngine;
 using System.Collections;
 using System.IO.Ports;
@@ -5,19 +9,14 @@ using System.Threading;
 
 public class Sending : MonoBehaviour {
     
-	public static SerialPort sp = new SerialPort("COM3", 9600);
-	public string msg;
+	// change the port based on your computer setting
+	public static SerialPort sp = new SerialPort("COM4", 9600);
 	// Use this for initialization
 	void Start () {
 		OpenConnection();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-			msg = sp.ReadLine();
-			print(msg);
-	}
 
+	// Connect the SerialPort
 	public void OpenConnection() {
 		if (sp != null) {
 			if (sp.IsOpen) {
@@ -44,7 +43,8 @@ public class Sending : MonoBehaviour {
 		sp.Close();
     }
 
-    public static void sendCmd(int a, int b){
-		sp.Write(a+","+b);
-    }
+	// Send the command (two angle) to SerialPort
+	public static void sendCmd(int angle1, int angle2){
+		sp.Write(angle1+","+angle2);
+	}
 }
