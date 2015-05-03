@@ -28,7 +28,7 @@ public class Button : MonoBehaviour {
 			old1 = angle1;
 			old2 = angle2;
 			info = "Send (" + send1 + ", " + send2 + ")";
-			Sending.sendCmd(send1, send2);
+			Sending.sendCmd(send1, -send2);
 		}
 
 		// Dashboard
@@ -49,9 +49,11 @@ public class Button : MonoBehaviour {
 					pos3D = hit.point;
 					// calculate parameter for horizontal rotation
 					angle1 = 45 - (int)(Math.Atan2(pos3D.z, pos3D.x)*180.0/Math.PI);
+					angle1 = (angle1/10)*10;
 					// calculate parameter for vertical rotation
 					double d = Math.Sqrt(pos3D.x*pos3D.x+pos3D.z*pos3D.z);
 					angle2 = 45 - (int)(Math.Atan2(6-pos3D.y, d)*90.0/Math.PI);
+					angle2 = (angle2/10)*10;
 				}
 			}
 		}
