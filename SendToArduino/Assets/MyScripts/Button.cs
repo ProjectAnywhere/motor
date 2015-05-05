@@ -1,6 +1,9 @@
-﻿/*
- * Wei Huang, 5/1/2015
- */
+﻿/// <summary>
+/// Button.cs is used to render the UI (buttons and parameters display); 
+/// the calculation for two angles is also encoded here
+/// Date: 5/1/2015
+/// Author: Wei Huang
+/// </summary>
 
 using UnityEngine;
 using System.Collections;
@@ -8,9 +11,9 @@ using System;
 
 public class Button : MonoBehaviour {
 
-	private string info;
+	private string info; // status indicator
 	private Vector3 pos3D; // world coordinates of target point
-	private int angle1, angle2;	// parameters for two motors
+	private int angle1, angle2;	// parameters required by two motors
 	private int old1 = 0, old2 = 0; // previous parameters for two motors
 	private Vector2 pos2D; // screen coordinates of target point
 	public Texture img; // mark the target
@@ -23,15 +26,18 @@ public class Button : MonoBehaviour {
 		// Sending module
 		GUI.Label(new Rect(50,20,120,30),info);		
 		if(GUI.Button(new Rect(150,10,50,50),"Send")) {
-			int send1 = angle1 - old1;
+			// motors control require the difference between current and previous status
+			int send1 = angle1 - old1; 
 			int send2 = angle2 - old2;
-			old1 = angle1;
+			// save the current target position
+			old1 = angle1; 
 			old2 = angle2;
 			info = "Send (" + send1 + ", " + send2 + ")";
+			// call the function in Sending.cs
 			Sending.sendCmd(send1, -send2);
 		}
 
-		// Dashboard
+		// Dashboard to display related parameters
 		Vector3 cam = Camera.main.transform.position;
 		GUI.Label(new Rect(300,10,200,30), "Camera Position: " + cam);
 		GUI.Label(new Rect(300,35,200,30), "Target Position: " + pos3D);
@@ -42,8 +48,9 @@ public class Button : MonoBehaviour {
 		// Track the target point
 		if (Input.GetMouseButton(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit; // intersection point of light beam with the wall
+			RaycastHit hit;
 			if(Physics.Raycast(ray, out hit)) {
+				// get intersection point of light beam with the wall
 				if(hit.collider.gameObject.tag=="Finish") {
 					pos2D = Input.mousePosition;
 					pos3D = hit.point;

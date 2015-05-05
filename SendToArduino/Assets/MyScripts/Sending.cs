@@ -1,6 +1,9 @@
-/*
- * Wei Huang, 5/1/2015
- */
+/// <summary>
+/// Sending.cs is used to establish the connection between Unity and Arduino;
+/// the command (two angle) will be sent as a string
+/// Date: 5/1/2015
+/// Author: Wei Huang
+/// </summary>
 
 using UnityEngine;
 using System.Collections;
@@ -39,6 +42,7 @@ public class Sending : MonoBehaviour {
 		}
     }
 
+	// Close the SerialPort
     void OnApplicationQuit() {
 		sp.Close();
     }
