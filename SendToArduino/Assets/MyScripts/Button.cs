@@ -13,7 +13,7 @@ public class Button : MonoBehaviour {
 
 	private string info; // status indicator
 	private Vector3 pos3D; // world coordinates of target point
-	private int angle1, angle2;	// parameters required by two motors
+	private int angle1 = 0, angle2 = 0;	// parameters required by two motors
 	private int old1 = 0, old2 = 0; // previous parameters for two motors
 	private Vector2 pos2D; // screen coordinates of target point
 	public Texture img; // mark the target
